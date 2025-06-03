@@ -5,11 +5,20 @@ on:
     branches: ["main"]
 
 jobs:
-  deploy-codigofacilito:
+  deploy:
+    name: Deploy application
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: echo "Hacemos pull del código"
-      - run: echo "Correr migraciones"
-      - run: echo "Generar binarios"
-      - run: echo "Publicar versión"
+      #- name: Checkout code
+      # uses: actions/checkout@v4
+      - name: Pull latest code
+        run: echo "Hacemos pull del código"
+
+      - name: Run migrations
+        run: echo "Correr migraciones"
+
+      - name: Build binaries
+        run: echo "Generar binarios"
+
+      - name: Publish version
+        run: echo "Publicar versión"

@@ -12,7 +12,7 @@ jobs:
         run: echo "Hola mundo desde mi primer job y mi primer paso"
 
   second_job:
-  if: ${{ github.ref == 'refs/heads/main' }}
+    if: ${{ github.ref == 'refs/heads/main' }}
     needs: first_job
     runs-on: ubuntu-latest
     steps:

@@ -7,22 +7,17 @@ on:
 jobs:
   first_job:
     runs-on: ubuntu-latest
-    env:
-      NAME: CodigoFacilito
+    outputs:
+      SALIDA: ${{ steps.step1.outputs.my_variable }}
 
     steps:
-      - name: Echo messages
-        id: step_uno
-        run: echo "my_variable=Hola mundo guardado dede el job" >> $GITHUB_OUTPUT
+    - name: Generar archivo
+      id: stepUno
+      run: 
+        echo "Archivo prueba, hola" >> test.log
 
-      - name: Obtener mensaje
-        run: echo "El mensaje es:${{steps.step_uno.outputs.my_variable}}"
-
-  second_job:
-    name: Second Job CodigoFacilito
-    if: ${{ github.ref == 'refs/heads/main' }}
-    needs: first_job
-    runs-on: ubuntu-latest
-    steps:
-      - name: Hola mundo 2
-        run: echo "Hola mundo desde mi segundo job y mi segundo paso"
+    - name: Subir artefacto
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-log
+        path: test.log

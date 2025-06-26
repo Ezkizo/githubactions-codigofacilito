@@ -1,24 +1,23 @@
-#name: "Deploy CodigoFacilito"
+name: "Deploy CodigoFacilito"
 
-#on:
-  #push:
-  #  branches: ["main"]
+on:
+  workflow_dispatch:
+    
+jobs:
+  deploy:
+    name: Deploy application
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Pull latest code
+        run: echo "Hacemos pull del código"
 
-#jobs:
-  #deploy:
-    #name: Deploy application
-    #runs-on: ubuntu-latest
-    #steps:
-      #- name: Checkout code
-      # uses: actions/checkout@v4
-      #- name: Pull latest code
-        #run: echo "Hacemos pull del código"
+      - name: Run migrations
+        run: echo "Correr migraciones"
 
-      #- name: Run migrations
-        #run: echo "Correr migraciones"
+      - name: Build binaries
+        run: echo "Generar binarios"
 
-      #- name: Build binaries
-        #run: echo "Generar binarios"
-
-      #- name: Publish version
-        #run: echo "Publicar versión"
+      - name: Publish version
+        run: echo "Publicar versión"

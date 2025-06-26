@@ -12,7 +12,11 @@ jobs:
 
     steps:
       - name: Echo messages
-        run: echo $GITHUB_OUTPUT
+        id: step_uno
+        run: echo "my_variable=Hola mundo guardado dede el job" >> $GITHUB_OUTPUT
+
+      - name: Obtener mensaje
+        run: echo "El mensaje es:${{steps.step_uno.outputs.my_variable}}"
 
   second_job:
     name: Second Job CodigoFacilito

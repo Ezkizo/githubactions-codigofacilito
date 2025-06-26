@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Echo messages
-        run: $GITHUB_OUTPUT
+        run: echo $GITHUB_OUTPUT
 
   second_job:
     name: Second Job CodigoFacilito
